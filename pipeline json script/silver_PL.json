@@ -1,0 +1,32 @@
+{
+    "id": "bebda264-d0a3-424e-ae80-ac29e9f496db",
+    "pipeline_type": "WORKSPACE",
+    "development": true,
+    "notifications": [
+        {
+            "email_recipients": [
+                "lmlosarito@hotmail.com"
+            ],
+            "alerts": [
+                "on-update-success",
+                "on-update-failure",
+                "on-update-fatal-failure",
+                "on-flow-failure"
+            ]
+        }
+    ],
+    "continuous": false,
+    "channel": "PREVIEW",
+    "photon": true,
+    "libraries": [
+        {
+            "notebook": {
+                "path": "/Repos/CapstoneProject/Capstone_Project/notebooks/3_silver_dlt_pipelines_ingestions"
+            }
+        }
+    ],
+    "name": "silver_PL",
+    "serverless": true,
+    "catalog": "leomar",
+    "schema": "2silver"
+}

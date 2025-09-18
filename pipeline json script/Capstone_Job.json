@@ -1,0 +1,108 @@
+{
+  "name": "Capstone_Job",
+  "email_notifications": {
+    "no_alert_for_skipped_runs": false
+  },
+  "webhook_notifications": {},
+  "timeout_seconds": 0,
+  "max_concurrent_runs": 1,
+  "tasks": [
+    {
+      "task_key": "Tsk_1_file_transfer_github_files_to_databricks",
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Repos/CapstoneProject/Capstone_Project/notebooks/1_file_transfer_github_files_to_databricks",
+        "source": "WORKSPACE"
+      },
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {}
+    },
+    {
+      "task_key": "Tsk_2_1_bronze_ingestion_batch_processing",
+      "depends_on": [
+        {
+          "task_key": "Tsk_1_file_transfer_github_files_to_databricks"
+        }
+      ],
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Repos/CapstoneProject/Capstone_Project/notebooks/2.1_bronze_ingestion_batch_processing",
+        "source": "WORKSPACE"
+      },
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {}
+    },
+    {
+      "task_key": "Tsk_2_2_bronze_streaming",
+      "depends_on": [
+        {
+          "task_key": "Tsk_2_1_bronze_ingestion_batch_processing"
+        }
+      ],
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Repos/CapstoneProject/Capstone_Project/notebooks/2.2_bronze_streaming",
+        "source": "WORKSPACE"
+      },
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {}
+    },
+    {
+      "task_key": "Tsk_3_silver_dlt_pipelines_ingestions",
+      "depends_on": [
+        {
+          "task_key": "Tsk_2_2_bronze_streaming"
+        }
+      ],
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Repos/CapstoneProject/Capstone_Project/pipeline json script/silver_PL",
+        "source": "WORKSPACE"
+      },
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {}
+    },
+    {
+      "task_key": "Tsk_4_gold_dlt_pipelines_ingestions",
+      "depends_on": [
+        {
+          "task_key": "Tsk_3_silver_dlt_pipelines_ingestions"
+        }
+      ],
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Repos/CapstoneProject/Capstone_Project/pipeline json script/gold_PL",
+        "source": "WORKSPACE"
+      },
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {}
+    },
+    {
+      "task_key": "Tsk_5_Fraud_detection_alert_and_monitoring",
+      "depends_on": [
+        {
+          "task_key": "Tsk_4_gold_dlt_pipelines_ingestions"
+        }
+      ],
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Repos/CapstoneProject/Capstone_Project/notebooks/5_Fraud_detection_alert_and_monitoring",
+        "source": "WORKSPACE"
+      },
+      "timeout_seconds": 0,
+      "email_notifications": {}
+    }
+  ],
+  "queue": {
+    "enabled": true
+  },
+  "performance_target": "PERFORMANCE_OPTIMIZED",
+  "run_as": {
+    "user_name": "lmlosarito@hotmail.com"
+  }
+}

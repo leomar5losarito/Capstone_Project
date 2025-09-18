@@ -1,0 +1,19 @@
+{
+    "id": "b57c6978-cc0a-4779-b492-c2d8f71af1f7",
+    "pipeline_type": "WORKSPACE",
+    "development": true,
+    "continuous": false,
+    "channel": "PREVIEW",
+    "photon": true,
+    "libraries": [
+        {
+            "notebook": {
+                "path": "/Repos/CapstoneProject/Capstone_Project/notebooks/4_gold_dlt_pipelines_ingestions"
+            }
+        }
+    ],
+    "name": "gold_PL",
+    "serverless": true,
+    "catalog": "leomar",
+    "schema": "3gold"
+}
