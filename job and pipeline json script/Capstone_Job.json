@@ -54,7 +54,7 @@
       "task_key": "Tsk_5_Fraud_detection_alert_and_monitoring",
       "depends_on": [
         {
-          "task_key": "Tsk_4_gold_dlt_pipelines_ingestions"
+          "task_key": "Tsk_2_2_bronze_streaming"
         }
       ],
       "run_if": "ALL_SUCCESS",
@@ -63,7 +63,8 @@
         "source": "WORKSPACE"
       },
       "timeout_seconds": 0,
-      "email_notifications": {}
+      "email_notifications": {},
+      "webhook_notifications": {}
     }
   ],
   "queue": {
