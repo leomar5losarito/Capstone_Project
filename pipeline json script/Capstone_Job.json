@@ -51,38 +51,6 @@
       "webhook_notifications": {}
     },
     {
-      "task_key": "Tsk_3_silver_dlt_pipelines_ingestions",
-      "depends_on": [
-        {
-          "task_key": "Tsk_2_2_bronze_streaming"
-        }
-      ],
-      "run_if": "ALL_SUCCESS",
-      "notebook_task": {
-        "notebook_path": "/Repos/CapstoneProject/Capstone_Project/pipeline json script/silver_PL",
-        "source": "WORKSPACE"
-      },
-      "timeout_seconds": 0,
-      "email_notifications": {},
-      "webhook_notifications": {}
-    },
-    {
-      "task_key": "Tsk_4_gold_dlt_pipelines_ingestions",
-      "depends_on": [
-        {
-          "task_key": "Tsk_3_silver_dlt_pipelines_ingestions"
-        }
-      ],
-      "run_if": "ALL_SUCCESS",
-      "notebook_task": {
-        "notebook_path": "/Repos/CapstoneProject/Capstone_Project/pipeline json script/gold_PL",
-        "source": "WORKSPACE"
-      },
-      "timeout_seconds": 0,
-      "email_notifications": {},
-      "webhook_notifications": {}
-    },
-    {
       "task_key": "Tsk_5_Fraud_detection_alert_and_monitoring",
       "depends_on": [
         {
