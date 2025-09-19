@@ -2,6 +2,19 @@
     "id": "b57c6978-cc0a-4779-b492-c2d8f71af1f7",
     "pipeline_type": "WORKSPACE",
     "development": true,
+    "notifications": [
+        {
+            "email_recipients": [
+                "lmlosarito@hotmail.com"
+            ],
+            "alerts": [
+                "on-update-success",
+                "on-update-failure",
+                "on-update-fatal-failure",
+                "on-flow-failure"
+            ]
+        }
+    ],
     "continuous": false,
     "channel": "PREVIEW",
     "photon": true,
